@@ -1,0 +1,21 @@
+{
+	"BASE_URL" : "http://192.168.202.55:7860",
+	"TXT2IMG_DIR" : "D:/sd/img/",
+	"IMG2IMG_DIR": "D:/sd/img/",
+
+	/* SD相关默认参数 */
+	"EMPTY_POST_PROMPT": "best quality,masterpiece,ultra detailed,4K、8K,UHD,HDR,photographic,1 people",
+	"EMPTY_NEGT_PROMPT" : "",
+	"WIDTH": 512,
+	"HEIGHT": 512,
+	"STEPS": 20,
+	"BATCH_SIZE": 1,
+	"N_ITER": 1,
+	"SAMPLER_NAME" : "Euler a",
+	"CFG_SCALE" : 7,
+	"SEED" : -1,
+
+
+
+	"IMG2IMG_SRC_PATH":"D:/sd/img/0426165232802829.png"
+}

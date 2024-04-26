@@ -1,12 +1,15 @@
 import base64
 import datetime
 import io
-
+import json
 import requests
 from PIL import Image
 
-BASE_URL = "http://192.168.202.55:7860"
-IMG_DATA_DIR = r"D:/sd/img/"
+with open('config.json', 'r') as configFile:
+    config = json.load(configFile)
+
+BASE_URL = config['BASE_URL']
+IMG_DATA_DIR = config['TXT2IMG_DIR']
 
 prompt = 'best quality,masterpiece,ultra detailed,4K、8K,UHD,HDR,photographic,1 people'
 negative_prompt = ''
@@ -22,13 +25,14 @@ payload = {
     # 基本参数
     "prompt": prompt,
     "negative_prompt": negative_prompt,
-    "steps": 20,
-    "sampler_name": "Euler a",
-    "width": 512,
-    "height": 512,
-    "batch_size": 1,
-    "n_iter": 1,
-    "seed": -1,
+    "steps": config['STEPS'],
+    "sampler_name": config['SAMPLER_NAME'],
+    "width": config['WIDTH'],
+    "height": config['HEIGHT'],
+    "batch_size": config['BATCH_SIZE'],
+    "n_iter": config['N_ITER'],
+    "seed": config['SEED'],
+    "cfg_scale": config['CFG_SCALE'],
     "CLIP_stop_at_last_layers": 2,
 
     # 面部修复 face fix

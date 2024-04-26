@@ -4,14 +4,18 @@ import base64
 import cv2
 import requests
 from PIL import Image
+import json
 
-BASE_URL = "http://192.168.202.55:7860"
-IMG_DATA_DIR = r"D:/sd/img/"
+with open('config.json', 'r') as configFile:
+    config = json.load(configFile)
 
-prompt = 'best quality,masterpiece,ultra detailed,4K、8K,UHD,HDR,photographic,1 people'
+BASE_URL = config['BASE_URL']
+IMG_DATA_DIR = config['IMG2IMG_DIR']
+
+prompt = ''
 negative_prompt = ''
 
-src_img = cv2.imread(r'D:/sd/img/0426165232802829.png')
+src_img = cv2.imread(config['IMG2IMG_SRC_PATH'])
 
 # 编码图像
 retval, bytes = cv2.imencode('.png', src_img)
@@ -29,14 +33,14 @@ payload = {
     # 基本参数
     "prompt": prompt,
     "negative_prompt": negative_prompt,
-    "steps": 20,
-    "sampler_name": "Euler a",
-    "width": 512,
-    "height": 512,
-    "batch_size": 1,
-    "n_iter": 1,
-    "seed": 1,
-    "cfg_scale": 7,
+    "steps": config['STEPS'],
+    "sampler_name": config['SAMPLER_NAME'],
+    "width": config['WIDTH'],
+    "height": config['HEIGHT'],
+    "batch_size": config['BATCH_SIZE'],
+    "n_iter": config['N_ITER'],
+    "seed": config['SEED'],
+    "cfg_scale": config['CFG_SCALE'],
     "CLIP_stop_at_last_layers": 2,
 
     "init_images": [encoded_image],
