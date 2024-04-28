@@ -54,6 +54,9 @@ payload = {
     # "hr_scale": 2,
     # "hr_upscaler": "Latent",
 
+    "do_not_save_samples": False,
+    "do_not_save_grid": False
+
 }
 
 response = requests.post(url=f'{BASE_URL}/sdapi/v1/img2img', json=payload)
