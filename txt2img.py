@@ -5,7 +5,7 @@ import json
 import requests
 from PIL import Image
 
-with open('config.json', 'r') as configFile:
+with open('config.json', 'r', encoding='utf-8') as configFile:
     config = json.load(configFile)
 
 BASE_URL = config['BASE_URL']
